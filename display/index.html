@@ -1,0 +1,145 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/1147679ae7.js" crossorigin="anomymous"></script>
+    <title>Ivy-project</title>
+    
+    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src='images/logo.png'>
+        </div>
+        <div class="menu">
+            <li><a href="">NỮ</a>
+                <ul class="sub-menu">
+                    <li><a href="">Hàng mới về</a></li>
+                    <li><a href="">Collection</a></li>
+                    <li><a href="">Áo</a>
+                        <ul>
+                            <li><a href="">Áo sơ mi</a></li>
+                            <li><a href="">Áo thun</a></li>
+                            <li><a href="">Áo Vest</a></li>
+                            <li><a href="">Áo khoác</a></li>
+                            <li><a href="">Áo len</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Quần</a>
+                        <ul>
+                            <li><a href="">Quần jean</a></li>
+                            <li><a href="">Quần lửng</a></li>
+                            <li><a href="">Quần dài</a></li>
+                            <li><a href="">Quần khoác</a></li>
+                            <li><a href="">Quần len</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="">NAM</a></li>
+            <li><a href="">TRẺ EM</a></li>
+            <li><a href="">SALE</a></li>
+            <li><a href="">KHẨU TRANG</a></li>
+            <li><a href="">BST</a></li>
+            <li><a href="">THÔNG TIN</a></li>
+        </div>
+        <div class="other">
+            <li><input placeholder="Tìm kiếm" type="text"> <i class="fas fa-search"></i></li>
+            <li><a class="fa fa-paw" href=""></a></li>
+            <li><a class="fa fa-user" href=""></a></li>
+            <li><a class="fa fa-shopping-bag" href=""></a></li>
+        </div>
+    </header>
+    <section id="slider">
+        <div class="slide-container">
+            <img src="images/slide1.jpg">
+            <img src="images/slide2.jpg">
+            <img src="images/slide3.jpg">
+            <img src="images/slide4.jpg">
+        </div>
+        <div class="dot-container">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </section>
+    <!----------------------------------------app------------------------------------------->
+    <section class="app-container">
+        <p>Tải ứng dụng IVY moda</p>
+        <div class="app-google">
+            <img src="images/appstore.png">
+            <img src="images/googleplay.png">
+        </div>
+        <p>Nhận bản tin IVY moda</p>
+        <input type="email" placeholder="Nhập địa chỉ email">
+    </section>
+    <!----------------------------------------footer------------------------------------------->
+    <footer>
+        <div class="footer-top">
+            <li><a href=""><img src='images/img-congthuong.png'></a></li>
+            <li><a href="">Liên hệ</a></li>
+            <li><a href=""></a>Tuyển dụng</li>
+            <li><a href=""></a>Giới thiệu</li>
+            <li>
+                <a href="" class="fab fa-facebook-f"></a>
+                <a href="" class="fab fa-twitter"></a>
+                <a href="" class="fab fa-youtube"></a>
+            </li>
+        </div>
+        <div class="footer-center">
+            <p>
+                Công ty Cổ phần Dự Kim với số đăng ký kinh doanh: 0105777650<br>
+                Địa chỉ đăng ký: Tổ dân phố Tháp, P.Đại Mỗ, Q.Nam Từ Liêm, TP.Hà Nội, Việt Nam<br>
+                Số điện thoại: <b>0243 205 2222</b>
+            </p>
+        </div>
+        <div class="footer-bottom">
+            ©IVYmoda All rights reserved
+        </div>
+    </footer>
+</body>
+<script>
+    const header = document.querySelector('header')
+    window.addEventListener('scroll',function(){
+        x=window.pageYOffset
+        if(x>0){
+            header.classList.add('sticky')
+        }
+        else{
+            header.classList.remove('sticky')
+        }
+    })
+
+
+
+
+    const imgPosition = document.querySelectorAll(".slide-container img")
+    const imgContainer = document.querySelector(".slide-container ")
+    const dotItem=document.querySelectorAll('.dot')
+    let imgNumber=imgPosition.length
+    let index=0;
+
+    imgPosition.forEach(function(image,index){
+        image.style.left = index*100 +'%'
+        dotItem[index].addEventListener('click',function(){
+            slider(index)
+        })
+    })
+    function imgSlide(){
+        index ++;
+        if(index>=imgNumber) {index=0}
+        slider(index)
+    }
+    function slider (index){
+        imgContainer.style.left = "-" + index*100 +'%'
+        const dotActive = document.querySelector(".active")
+        dotActive.classList.remove('active')
+        dotItem[index].classList.add('active')
+    }
+    setInterval(imgSlide,8000)
+</script>
+</html>
